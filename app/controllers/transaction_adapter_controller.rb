@@ -1,0 +1,2 @@
+class TransactionAdapterController < ApplicationController
+end

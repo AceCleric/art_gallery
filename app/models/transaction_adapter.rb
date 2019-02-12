@@ -1,0 +1,2 @@
+class TransactionAdapter < ApplicationRecord
+end

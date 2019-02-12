@@ -1,0 +1,18 @@
+
+default: &default
+  adapter: mysql2
+  pool: 5
+  username: root
+  socket: /tmp/mysql.sock
+
+development: &development
+  <<: *default
+  database: artgallery_development
+
+test: &test
+  <<: *default
+  database: artgallery_test
+
+production: &production
+  <<: *default
+  database: artgallery_production
