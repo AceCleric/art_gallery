@@ -1,2 +1,0 @@
-class ArtPieceController < ApplicationController
-end
