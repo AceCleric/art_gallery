@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_093715) do
+ActiveRecord::Schema.define(version: 2019_03_10_160349) do
 
   create_table "art_pieces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 250
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_01_18_093715) do
     t.float "width"
     t.float "surface"
     t.integer "built_in"
+    t.string "image_url"
   end
 
   create_table "customer_wallet", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

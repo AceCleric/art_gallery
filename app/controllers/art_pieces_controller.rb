@@ -1,5 +1,5 @@
 class ArtPiecesController < ApplicationController
-  before_action :set_art_piece, only: [:show, :edit, :update, :destroy]
+  before_action :set_art_piece, only: %i[show edit update destroy]
 
   def index
     @art_pieces = ArtPiece.all
@@ -51,6 +51,18 @@ class ArtPiecesController < ApplicationController
       format.html { redirect_to art_pieces_url, notice: 'Art piece was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_art_piece
+    @art_piece = ArtPiece.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def art_piece_params
+    params.require(:art_piece).permit(:name, :artist, :rentprice, :image_url, :length, :width, :surface, :built_in)
   end
 
 end

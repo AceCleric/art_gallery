@@ -1,39 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Art pieces</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Artist</th>
-      <th>Length</th>
-      <th>Width</th>
-      <th>Surface</th>
-      <th>Made in</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<%= render 'layouts/notice' %>
+<h1 style="text-align:center;">Art pieces</h1>
+<div class="container">
+  <div class="row">
     <% @art_pieces.each do |art_piece| %>
-      <tr>
-        <td><%= art_piece.name %></td>
-        <td><%= art_piece.rentprice %></td>
-        <td><%= art_piece.artist %></td>
-        <td><%= art_piece.length %></td>
-        <td><%= art_piece.width %></td>
-        <td><%= art_piece.surface %></td>
-        <td><%= art_piece.built_in %></td>
-        <td><%= link_to 'Show', art_piece %></td>
-        <td><%= link_to 'Edit', edit_art_piece_path(art_piece) %></td>
-        <td><%= link_to 'Destroy', art_piece, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <%=image_tag("#{art_piece.image_url}", style: "width: 100%; height: 100%; max-height:14em", alt: "Example Image", class: "card-img-right flex-auto d-none d-md-block")%>
+        <div class="card-body">
+          <p class="card-text"><%= art_piece.name %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <%= button_to "Show", art_piece, method: :get %>
+              <%= button_to "edit", edit_art_piece_path(art_piece), method: :get %>
+              <%= button_to "delete", art_piece, method: :delete, data: { confirm: 'Are you sure?' }, style: "margin-bottom: 20px; color:orange;" %>
+            </div>
+              <small class="text-muted"><%= art_piece.rentprice %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
 <br>
-
-<%= link_to 'New art piece', new_art_piece_path %>

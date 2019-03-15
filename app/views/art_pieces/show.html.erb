@@ -1,19 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
-  <%= @art_piece.first_name %>
+  <strong>Name:</strong>
+  <%= @art_piece.name %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
-  <%= @art_piece.last_name %>
+  <strong>Image:</strong>
+  <%= @art_piece.image_url %>
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @art_piece.email %>
+  <strong>Rent price:</strong>
+  <%= @art_piece.rentprice %>
 </p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @art_piece.artist %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @art_piece.length %>
+  <%= @art_piece.width %>
+  <%= @art_piece.surface %>
+  <%= @art_piece.built_in %>
+</p>
+
 
 <%= link_to 'Edit', edit_art_piece_path(@art_piece) %> |
 <%= link_to 'Back', art_pieces_path %>

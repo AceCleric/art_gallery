@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :art_pieces
-  
+  resources :employees
+
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

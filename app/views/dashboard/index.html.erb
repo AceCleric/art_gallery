@@ -1,10 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YoungCapital Artgallery</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <%= render 'login' %>
+
 <% if current_user %>
-  Logged in as <%= "#{current_user.first_name}  #{current_user.last_name}"%>.
-  <%= link_to "Log Out", logout_path %>
-<% else %>
-  <%= link_to "Sign Up", signup_path %> or
-  <%= link_to "Log In", login_path %>
-<% end %>
-<p id=”notice”><%= notice %></p>
-<h1>Dashboard#index</h1>
-<p>Lorem ipsum …</p>
+  <body class='<%= controller.controller_name %>'>
+    <%= render 'navbar' %>
+    <div id="banner">
+      <span class="title"> <%= @page_title %> </span>
+    </div>
+    <div id="columns">
+        <div id="cart">
+          <% if @wallet %>
+            <%= hidden_div_if(@wallet.line_items.empty?, id: 'wallet') do %>
+            <%= render @wallet %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+  </body>
+  <% else %>
+    <p>Please login</p>
+  <% end %>
+</html>
