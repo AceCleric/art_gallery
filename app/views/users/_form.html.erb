@@ -1,5 +1,8 @@
 
 <%= simple_form_for(@user) do |f| %>
+<% if current_user %>
+    <%= content_tag(:h1, "#{current_user.first_name}  #{current_user.last_name}")  %> </h1>
+  <% end %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 

@@ -11,27 +11,11 @@
   </head>
 
   <%= render 'login' %>
+  <%= render 'navbar' %>
 
 <% if current_user %>
   <body class='<%= controller.controller_name %>'>
-    <%= render 'navbar' %>
-    <div id="banner">
-      <span class="title"> <%= @page_title %> </span>
-    </div>
-    <div id="columns">
-        <div id="cart">
-          <% if @wallet %>
-            <%= hidden_div_if(@wallet.line_items.empty?, id: 'wallet') do %>
-            <%= render @wallet %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <div id="main">
-        <%= yield %>
-      </div>
+    <%= render 'art_pieces/carousel' %>
   </body>
-  <% else %>
-    <p>Please login</p>
   <% end %>
 </html>

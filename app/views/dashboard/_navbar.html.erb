@@ -10,16 +10,16 @@
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <%= link_to 'Home', root_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Catalogus</a>
+        <%= link_to 'Catalogus', art_pieces_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Geleend</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Mijn account</a>
+        <%= link_to 'Mijn Account',"/users/#{current_user.id}" , class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to 'New art piece', new_art_piece_path, class: "nav-link" %>

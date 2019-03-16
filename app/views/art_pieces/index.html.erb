@@ -1,25 +1,26 @@
 <%= render 'layouts/notice' %>
-<h1 style="text-align:center;">Art pieces</h1>
+<%= render 'dashboard/navbar' %>
+<h1 style="text-align:center;">De YoungCapital Catalogus</h1>
 <div class="container">
   <div class="row">
     <% @art_pieces.each do |art_piece| %>
-    <div class="col-md-4">
-      <div class="card mb-4 shadow-sm">
-        <%=image_tag("#{art_piece.image_url}", style: "width: 100%; height: 100%; max-height:14em", alt: "Example Image", class: "card-img-right flex-auto d-none d-md-block")%>
-        <div class="card-body">
-          <p class="card-text"><%= art_piece.name %></p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <%= button_to "Show", art_piece, method: :get %>
-              <%= button_to "edit", edit_art_piece_path(art_piece), method: :get %>
-              <%= button_to "delete", art_piece, method: :delete, data: { confirm: 'Are you sure?' }, style: "margin-bottom: 20px; color:orange;" %>
-            </div>
-              <small class="text-muted"><%= art_piece.rentprice %></small>
-            </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+           <%=image_tag("#{art_piece.image_url}", style: "width: 100%; height: 100%; max-height:14em",
+            alt: "#{art_piece.name}", class: "card-img-right flex-auto d-none d-md-block")%>
+          <div class="card-body">
+            <h4 class="card-title">
+                <%= link_to "#{art_piece.name}", "/art_pieces/#{art_piece.id}" %>
+            </h4>
+              <%= content_tag(:h5, "#{art_piece.rentprice}")  %>
+              <%= content_tag(:p, "#{art_piece.length}cm X |#{art_piece.width}cm X #{art_piece.surface}\n Built in #{art_piece.built_in}" , class: "card-text")  %>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">★ ★ ★ ★ ☆</small>
           </div>
         </div>
       </div>
-      <% end %>
+    <% end %>
     </div>
   </div>
 

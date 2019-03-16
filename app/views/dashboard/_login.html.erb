@@ -1,10 +1,12 @@
-<% if current_user %>
-  Logged in as <%= current_user.email %>.
+<div style="background-color: #6c757d">
+  <% if current_user %>
+    Logged in as <%= current_user.email %>.
 
-  <%= link_to "Log Out", logout_path %>
-<% else %>
-<div class="login">
-  <%= link_to "Sign Up", signup_path %> or
-  <%= link_to "Log In", login_path %>
-</div
-<% end %>
+    <%= link_to "Log Out", logout_path %>
+  <% else %>
+  <div class="login">
+    <%= link_to image_tag('youngcapital.png', style: "height: 100px;"), login_path %> OR
+    <%= link_to image_tag('register.jpg', style: "height: 100px;"), signup_path %>
+  </div
+  <% end %>
+</div>
