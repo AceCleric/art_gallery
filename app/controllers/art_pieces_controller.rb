@@ -60,6 +60,10 @@ class ArtPiecesController < ApplicationController
     @art_piece = ArtPiece.find(params[:id])
   end
 
+  def set_art_pieces
+    @art_pieces = parent.art_piece
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def art_piece_params
     params.require(:art_piece).permit(:name, :artist, :rentprice, :image_url, :length, :width, :surface, :built_in)

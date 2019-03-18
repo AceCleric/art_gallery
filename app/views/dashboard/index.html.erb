@@ -10,12 +10,33 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <% tab("home") %>
   <%= render 'login' %>
   <%= render 'navbar' %>
 
 <% if current_user %>
   <body class='<%= controller.controller_name %>'>
-    <%= render 'art_pieces/carousel' %>
+    <div class="container">
+
+        <div class="row">
+          <div class="col-lg-3">
+            <h1 class="my-4 shop-color">YoungGallery</h1>
+            <div class="list-group">
+              <a href="#" class="list-group-item">Beeldende kunst</a>
+              <a href="#" class="list-group-item">Schilderkunst en tekenkunst</a>
+              <a href="#" class="list-group-item">Fotografie</a>
+            </div>
+          </div>
+          <!-- /.col-lg-3 -->
+
+        <%= render 'carousel' %>
+          <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+      </div>
+
   </body>
   <% end %>
 </html>

@@ -1,6 +1,7 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .login {
   height: 100%;
   width: 100%;
@@ -8,4 +9,8 @@
   position: fixed;
   align-items: center;
   justify-content: center;
+}
+
+.navbar-parts {
+  font-size: 25px;
 }

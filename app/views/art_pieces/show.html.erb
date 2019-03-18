@@ -1,33 +1,80 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @art_piece.name %>
-</p>
+<%= render "dashboard/navbar" %>
 
-<p>
-  <strong>Image:</strong>
-  <%= @art_piece.image_url %>
-</p>
+<div class="container art-show">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title mb-4">
+            <div class="d-flex justify-content-start">
+              <div class="image-container">
+                <%= image_tag("#{@art_piece.image_url}", style: "width: 150px; height: 150px;",
+                 alt: "#{@art_piece.name}", class: "img-thumbnail", id: "imgProfile") %>
+              </div>
+              <div class="userData ml-3">
+                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">
+                    <%= @art_piece.name %>
+                </h2>
+              </div>
+            </div>
+          </div>
 
-<p>
-  <strong>Rent price:</strong>
-  <%= @art_piece.rentprice %>
-</p>
+          <div class="row">
+            <div class="col-12">
+              <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                </li>
+              </ul>
+              <div class="tab-content ml-1" id="myTabContent">
+                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight:bold;">Kunstnaam</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                      <%= @art_piece.name %>
+                    </div>
+                  </div>
+                  <hr/>
 
-<p>
-  <strong>Artist:</strong>
-  <%= @art_piece.artist %>
-</p>
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight:bold;">Gemaakt in</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                      <%= @art_piece.built_in %>
+                    </div>
+                  </div>
+                  <hr/>
 
-<p>
-  <strong>Description:</strong>
-  <%= @art_piece.length %>
-  <%= @art_piece.width %>
-  <%= @art_piece.surface %>
-  <%= @art_piece.built_in %>
-</p>
-
-
-<%= link_to 'Edit', edit_art_piece_path(@art_piece) %> |
-<%= link_to 'Back', art_pieces_path %>
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight:bold;">Afmetingen</label>
+                    </div>
+                      <%= content_tag(:div, "#{@art_piece.length}cm X #{@art_piece.width}cm X #{@art_piece.surface}cm" , class: "col-md-8 col-6")  %>
+                  </div>
+                  <hr/>
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight:bold;">Gemaakt door</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                      <%= @art_piece.artist %>
+                    </div>
+                  </div>
+                  <hr/>
+                  <hr/>
+                </div>
+                <%= link_to 'Edit', edit_art_piece_path(@art_piece) %> |
+                <%= link_to 'Back', art_pieces_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

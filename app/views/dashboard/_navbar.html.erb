@@ -1,34 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
   <%= image_tag 'youngcapital.png', alt: 'YoungCapital Gallery', align: 'left', style: 'height: 100px;' %>
   <a class="navbar-brand" style="margin-left: 10px;" href="#">YC Gallery</a>
-  <% if current_user %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor">
-
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to 'Home', root_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Catalogus', art_pieces_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Geleend</a>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Mijn Account',"/users/#{current_user.id}" , class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'New art piece', new_art_piece_path, class: "nav-link" %>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <% end %>
-  </div>
-</nav>
+    <div class="container">
+      <% if current_user %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item <%= 'active' if @page_tab == "home" %>">
+              <%= link_to 'Home', root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item <%= 'active' if @page_tab == "catalogus" %>">
+            <%= link_to 'Catalogus', art_pieces_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item <%= 'active' if @page_tab == "user" %>">
+              <%= link_to 'Mijn Account',"/users/#{current_user.id}" , class: "nav-link" %>
+          </li>
+          <li class="nav-item <%= 'active' if @page_tab == "add_art" %>">
+            <%= link_to 'New art piece', new_art_piece_path, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+        <% end %>
+    </div>
+  </nav>
