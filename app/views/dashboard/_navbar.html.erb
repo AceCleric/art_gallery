@@ -17,10 +17,6 @@
           <li class="nav-item <%= 'active' if @page_tab == "user" %>">
               <%= link_to 'Mijn Account',"/users/#{current_user.id}" , class: "nav-link" %>
           </li>
-          <li class="nav-item <%= 'active' if @page_tab == "add_art" %>">
-            <%= link_to 'New art piece', new_art_piece_path, class: "nav-link" %>
-          </li>
-        </ul>
       </div>
         <% end %>
     </div>

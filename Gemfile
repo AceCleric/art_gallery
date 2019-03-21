@@ -35,6 +35,10 @@ gem 'bootstrap', '~> 4.0.0'
 
 gem 'jquery-rails'
 
+gem 'devise'
+
+gem 'activeadmin'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
