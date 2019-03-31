@@ -39,6 +39,8 @@ gem 'devise'
 
 gem 'activeadmin'
 
+gem 'cryptocompare'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

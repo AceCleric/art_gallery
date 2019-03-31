@@ -1,5 +1,6 @@
 class ArtPiecesController < ApplicationController
   before_action :set_art_piece, only: %i[show edit update destroy]
+  helper_method :find_user_name
 
   def index
     @art_pieces = ArtPiece.all
@@ -51,6 +52,25 @@ class ArtPiecesController < ApplicationController
       format.html { redirect_to art_pieces_url, notice: 'Art piece was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def rent_art_piece
+    user = current_user
+    set_art_piece
+    if user.customer_wallet.wallet_value < @art_piece.rentprice
+      redirect_to art_piece_path(@art_piece.id), notice: 'Transaction is gefaald. Te weinig saldo.'
+    else
+      transaction = user.customer_wallet.wallet_value - @art_piece.rentprice
+      @art_piece.update_columns(user_id: user.id)
+      user.customer_wallet.update_columns(wallet_value: transaction)
+      redirect_to art_piece_path(@art_piece.id), notice: 'Transactie is geslaagd!'
+    end
+  end
+
+  def find_user_name(art_piece_id)
+    set_art_piece
+
+    User.find(art_piece_id).name
   end
 
   private

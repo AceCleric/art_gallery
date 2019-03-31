@@ -35,10 +35,30 @@
         </div>
         <!-- /.row -->
 
-        <%= render 'table' %>
-
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Coinname</th>
+            <th scope="col">Bitcoin in Euros/Euros in Bitcoin </th>
+            <th scope="col">Symbol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @bitcoin["CoinName"] %></td>
+            <td><%= @btc_to_eu["BTC"]["EUR"] %></td>
+            <td><%= @bitcoin["Symbol"] %></td>
+          </tr>
+          <tr>
+            <td>EU</td>
+            <td><%= @eu_to_btc["EUR"]["BTC"] %></td>
+            <td>€</td>
+          </tr>
+        </tbody>
+      </table>
       </div>
-
   </body>
   <% end %>
 </html>
+
+<%= render 'users/footer' %>

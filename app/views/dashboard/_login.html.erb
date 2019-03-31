@@ -5,8 +5,8 @@
     <%= link_to "Log Out", logout_path %>
   <% else %>
   <div class="login">
-    <%= link_to image_tag('youngcapital.png', style: "height: 100px;"), login_path %> OR
-    <%= link_to image_tag('register.jpg', style: "height: 100px;"), signup_path %>
+    <%= link_to image_tag('youngcapital.png', alt: "Inloggen", style: "height: 100px; margin-right: 2em;"), login_path %> OR
+    <%= link_to image_tag('register.jpg', alt: "Registeren", style: "height: 100px; margin-left: 2em;"), signup_path %>
   </div
   <% end %>
 </div>

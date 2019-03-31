@@ -1,2 +1,0 @@
-class CustomerWalletController < ApplicationController
-end

@@ -27,7 +27,45 @@
                 <li class="nav-item">
                   <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
                 </li>
+                <li class="nav-item">
+                  <a class="btn btn-yc btn-xs" style="color: white; width: 8em; background-color: #84a0bd;" data-toggle="modal" role="button" data-target="#rentArtPiece">
+                    Huren
+                  </a>
+                </li>
               </ul>
+
+              <div class="modal fade" id="rentArtPiece" tabindex="-1" role="dialog" aria-labelledby="raiseModalModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="raiseModalModalLabel">Kunstwerk huren</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= simple_form_for(@art_piece) do |f| %>
+                        <%= f.error_notification %>
+                        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+                        <div class="form-inputs">
+                          <%= content_tag(:p, "Huur #{@art_piece.name} voor #{@art_piece.rentprice} BTC." , class: "card-text")  %>
+                          <%= f.label :body, label: "Huidige wallet waarde #{current_user.customer_wallet.wallet_value}" %>
+                        </div>
+                        <div class="form-actions modal-footer">
+                          <button type="button" class="btn btn-yc" data-dismiss="modal">Sluiten</button>
+                          <% if @art_piece.user_id? %>
+                            <%= content_tag(:p, "#{@art_piece.name} is gehuurd door #{ find_user_name(@art_piece.user_id)}." , class: "card-text") %>
+                          <% else %>
+                            <%= link_to 'Huren', rent_art_piece_art_piece_path, method: 'put',  class:"btn btn-yc btn-xs", style: "color:white" %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="tab-content ml-1" id="myTabContent">
                 <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
                   <div class="row">
@@ -68,7 +106,9 @@
                   <hr/>
                   <hr/>
                 </div>
-                <%= link_to 'Edit', edit_art_piece_path(@art_piece) %> |
+                <% if !current_user %>
+                  <%= link_to 'Edit', edit_art_piece_path(@art_piece) %> |
+                <% end %>
                 <%= link_to 'Back', art_pieces_path %>
               </div>
             </div>
@@ -78,3 +118,6 @@
     </div>
   </div>
 </div>
+
+
+<%= render 'users/footer' %>

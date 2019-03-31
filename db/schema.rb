@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_202909) do
+ActiveRecord::Schema.define(version: 2019_03_31_182232) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -52,23 +52,19 @@ ActiveRecord::Schema.define(version: 2019_03_21_202909) do
     t.float "surface"
     t.integer "built_in"
     t.string "image_url"
+    t.integer "user_id"
   end
 
-  create_table "customer_wallet", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "customer_wallets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.float "wallet_value"
+    t.integer "user_id"
+    t.integer "add_value", default: 0
+    t.integer "remove_value", default: 0
   end
 
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name", limit: 200
-    t.string "last_name", limit: 200
-    t.string "email", limit: 200
-  end
-
-  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name", limit: 200
-    t.string "last_name", limit: 200
-    t.integer "class_year"
-    t.string "uuid", limit: 191
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", limit: 200
+    t.boolean "is_active", default: true
   end
 
   create_table "transaction_adapter", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,6 +78,10 @@ ActiveRecord::Schema.define(version: 2019_03_21_202909) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "customers_id", default: 1
+    t.bigint "customer_wallet_id"
+    t.index ["customer_wallet_id"], name: "index_users_on_customer_wallet_id"
+    t.index ["customers_id"], name: "index_users_on_customers_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

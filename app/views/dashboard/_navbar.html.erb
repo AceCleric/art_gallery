@@ -9,13 +9,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item <%= 'active' if @page_tab == "home" %>">
-              <%= link_to 'Home', root_path, class: "nav-link" %>
+            <%= link_to 'Home', root_path, class: "nav-link" %>
           </li>
           <li class="nav-item <%= 'active' if @page_tab == "catalogus" %>">
             <%= link_to 'Catalogus', art_pieces_path, class: "nav-link" %>
           </li>
           <li class="nav-item <%= 'active' if @page_tab == "user" %>">
-              <%= link_to 'Mijn Account',"/users/#{current_user.id}" , class: "nav-link" %>
+            <%= link_to 'Mijn Account',"/users/#{current_user.id}", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log Out", logout_path, class: "nav-link" %>
           </li>
       </div>
         <% end %>

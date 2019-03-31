@@ -6,9 +6,18 @@ Rails.application.routes.draw do
   resources :users
   resources :art_pieces
   resources :employees
+  resources :customer_wallets
 
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :art_pieces do
+      put :rent_art_piece, on: :member
+    end
+
+  resources :users do
+      put :remove_rented_art_piece, on: :member
+    end
 end
