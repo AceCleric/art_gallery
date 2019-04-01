@@ -15,9 +15,4 @@ class CustomerWallet < ApplicationRecord
       wallet.update_columns(wallet_value: removed_value, remove_value: 0)
     end
   end
-
-  private
-  def check_add_and_remove_values?
-    wallet_value < remove_value
-  end
 end

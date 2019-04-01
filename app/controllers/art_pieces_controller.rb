@@ -30,8 +30,6 @@ class ArtPiecesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @art_piece.update(art_piece_params)
@@ -44,8 +42,6 @@ class ArtPiecesController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @art_piece.destroy
     respond_to do |format|
@@ -75,7 +71,6 @@ class ArtPiecesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_art_piece
     @art_piece = ArtPiece.find(params[:id])
   end
@@ -84,7 +79,6 @@ class ArtPiecesController < ApplicationController
     @art_pieces = parent.art_piece
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def art_piece_params
     params.require(:art_piece).permit(:name, :artist, :rentprice, :image_url, :length, :width, :surface, :built_in)
   end

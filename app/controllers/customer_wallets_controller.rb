@@ -29,8 +29,6 @@ class CustomerWalletsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @customer_wallet.update(customer_wallet_params)
@@ -41,8 +39,6 @@ class CustomerWalletsController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @customer_wallet.destroy
     respond_to do |format|
@@ -53,7 +49,6 @@ class CustomerWalletsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_customer_wallet
     @customer_wallet = CustomerWallet.find(params[:id])
   end
@@ -62,7 +57,6 @@ class CustomerWalletsController < ApplicationController
     @customer_wallets = parent.art_piece
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def customer_wallet_params
     params.require(:customer_wallet).permit(:wallet_value, :user_id, :add_value, :remove_value)
   end
