@@ -1,3 +1,3 @@
-class CustomerWallet < ApplicationRecord
+class Customer < ApplicationRecord
   has_many :users
 end
