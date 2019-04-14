@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
   require 'cryptocompare'
+  require 'openssl'
+  Open::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
   def index
     if !current_user

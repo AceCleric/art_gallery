@@ -41,6 +41,8 @@ gem 'activeadmin'
 
 gem 'cryptocompare'
 
+gem 'wdm' if Gem.win_platform?
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
