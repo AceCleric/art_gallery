@@ -1,6 +1,7 @@
-<h1>Editing art_piece</h1>
 <% tab "catalogus" %>
+<%= render 'dashboard/navbar' %>
+  <%= content_tag(:h1, "Bewerken van #{@art_piece.name}", style: "margin-left: 20px;")  %>
 <%= render 'form', art_piece: @art_piece %>
 
 <%= link_to 'Show', @art_piece %> |
-<%= link_to 'Back', art_pieces_path %>
+<%= link_to 'Terug', user_path(current_user.id) %>

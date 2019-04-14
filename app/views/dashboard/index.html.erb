@@ -11,10 +11,9 @@
   </head>
 
   <% tab("home") %>
-  <%= render 'login' %>
-  <%= render 'navbar' %>
 
-<% if current_user %>
+  <% if current_user %>
+  <%= render 'navbar' %>
   <body class='<%= controller.controller_name %>'>
     <div class="container">
 
@@ -58,7 +57,9 @@
       </table>
       </div>
   </body>
-  <% end %>
 </html>
-
 <%= render 'users/footer' %>
+<% else %>
+  <%= content_tag(:h5, "Please login first")  %>
+  <%= render 'users/footer' %>
+<% end %>

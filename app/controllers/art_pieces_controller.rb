@@ -21,7 +21,7 @@ class ArtPiecesController < ApplicationController
 
     respond_to do |format|
       if @art_piece.save
-        format.html { redirect_to @art_piece, notice: 'Art piece was successfully created.' }
+        format.html { redirect_to user_path(current_user.id), notice: 'Kunstwerk aangemaakt.' }
         format.json { render :show, status: :created, location: @art_piece }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class ArtPiecesController < ApplicationController
   def update
     respond_to do |format|
       if @art_piece.update(art_piece_params)
-        format.html { redirect_to @art_piece, notice: 'Art piece was successfully updated.' }
+        format.html { redirect_to user_path(current_user.id), notice: 'Kunstwerk bewerkt.' }
         format.json { render :show, status: :ok, location: @art_piece }
       else
         format.html { render :edit }
@@ -63,10 +63,10 @@ class ArtPiecesController < ApplicationController
     end
   end
 
-  def find_user_name(art_piece_id)
+  def find_user_name(user_id)
     set_art_piece
 
-    User.find(art_piece_id).name
+    user_id.nil? ? 'Not published by a user' : User.find(user_id).name
   end
 
   private
@@ -80,7 +80,7 @@ class ArtPiecesController < ApplicationController
   end
 
   def art_piece_params
-    params.require(:art_piece).permit(:name, :artist, :rentprice, :image_url, :length, :width, :surface, :built_in)
+    params.require(:art_piece).permit(:name, :artist, :rentprice, :image_url, :length, :width, :surface, :built_in, :belongs_to)
   end
 
 end

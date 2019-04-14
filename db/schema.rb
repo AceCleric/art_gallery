@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_182232) do
+ActiveRecord::Schema.define(version: 2019_04_13_165547) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_182232) do
     t.integer "built_in"
     t.string "image_url"
     t.integer "user_id"
+    t.integer "belongs_to"
   end
 
   create_table "customer_wallets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -1,10 +1,9 @@
-
+<%= render 'dashboard/navbar' %>
+<% if current_user %>
+    <%= content_tag(:h1, "#{current_user.name}")  %>
+  <% end %>
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %>
-
-<% if !current_user %>
-  <%= link_to 'Back', users_path %>
-<% end %>
+<%= link_to 'Terug', user_path(current_user.id) %>
 
 <%= render 'footer' %>

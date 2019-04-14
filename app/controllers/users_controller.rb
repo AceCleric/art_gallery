@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  helper_method :published_art_pieces
 
   def index
     @users = User.all
@@ -64,6 +65,12 @@ class UsersController < ApplicationController
     art_piece = ArtPiece.find_by(user_id: @user.id)
     art_piece.update_columns(user_id: nil)
     redirect_to user_path(@user.id), notice: "#{art_piece.name} beschikbaar gesteld!"
+  end
+
+  def published_art_pieces
+    set_user
+
+     ArtPiece.where(belongs_to: @user.id) || []
   end
 
   private
